@@ -109,6 +109,77 @@ include_once __DIR__ . '/../partials/head.php';
         <p>This chapter introduces how PHP handles different scalar values and how you can control type behavior
             manually through type casting.</p>
 
+        <h2>Other PHP Data Types</h2>
+
+        <h3>Compound Types</h3>
+        <p>Compound types can hold multiple values or a combination of different values:</p>
+        <ol>
+            <li>
+                <strong>Array:</strong> Declared using <span class="inline">[]</span> for an empty array or with initial
+                values. An array can contain all types of scalar data at once.
+                <br>
+                <code>
+            &lt;?php <br>
+            $mixed_array = [1, "two", 3.0, true]; <br>
+            var_dump($mixed_array); <br>
+            ?&gt;
+        </code>
+            </li>
+            <li><strong>Object:</strong> An instance of a class. Used in object-oriented programming.</li>
+            <li><strong>Callable:</strong> A variable that can be called as a function, like an anonymous function or a
+                string containing the name of a function.</li>
+            <li><strong>Iterable:</strong> A pseudo-type that includes both arrays and objects that can be looped
+                through using <span class="inline">foreach</span>.</li>
+        </ol>
+
+        <h3>Special Types</h3>
+        <ol>
+            <li>
+                <strong>Resource:</strong> A special variable, holding a reference to an external resource (e.g.,
+                database connections, file handles).
+            </li>
+            <li>
+                <strong>NULL:</strong> A variable with no value assigned, or explicitly set using <span
+                    class="inline">NULL</span>.
+                <br>
+                <code>
+            &lt;?php <br>
+            $name = NULL; <br>
+            var_dump($name); <br>
+            ?&gt;
+        </code>
+            </li>
+        </ol>
+
+        <h2>Type Hinting and Strict Types</h2>
+        <p>By default, PHP does not enforce strict typing. This means it can automatically convert one data type into
+            another when needed. However, this behavior can be changed.</p>
+
+        <h3>Enforcing Strict Types</h3>
+        <p>Use the <span class="inline">declare(strict_types=1);</span> directive at the top of the file to enable
+            strict type enforcement.</p>
+        <code>
+    &lt;?php <br>
+    declare(strict_types=1); <br><br>
+
+    function sum(int $a, int $b): int { <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;return $a + $b; <br>
+    } <br><br>
+
+    echo sum(5, 10); <br>
+    ?&gt;
+</code>
+
+        <p class="note">Without strict types, PHP will attempt to convert values to the expected type. With strict
+            types, mismatched types will throw a TypeError.</p>
+
+        <h3>Function Return Types</h3>
+        <p>Function declarations can also specify return types after a colon. The function above returns an <span
+                class="inline">int</span>.</p>
+
+        <p>This concludes our overview of PHP's core data types and how to control type behavior using casting and type
+            hinting. Advanced types like object, callable, and iterable will be explored in depth in later chapters.</p>
+
     </div>
 </div>
 
