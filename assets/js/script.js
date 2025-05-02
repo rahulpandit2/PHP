@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Code blocks handling (your first block)
     const codeBlocks = document.querySelectorAll('code');
 
     codeBlocks.forEach(code => {
@@ -37,26 +38,53 @@ document.addEventListener('DOMContentLoaded', () => {
             code.style.setProperty('--y', `${y}px`);
         });
     });
-});
 
-document.addEventListener('DOMContentLoaded', function() {
+    // Scroll to top functionality (your second block)
     const scrollButton = document.getElementById('scrollToTop');
     
-    // Show/hide button on scroll
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 200) {
-            scrollButton.classList.add('show');
-        } else {
-            scrollButton.classList.remove('show');
-        }
-    });
+    // Check if the button exists
+    if (!scrollButton) {
+        console.error('Scroll to top button not found!');
+    } else {
+        // Show/hide button on scroll
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 200) {
+                scrollButton.classList.add('show');
+            } else {
+                scrollButton.classList.remove('show');
+            }
+        });
 
-    // Smooth scroll to top
-    scrollButton.addEventListener('click', function(e) {
-        e.preventDefault();
+        // Button click event
+        scrollButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            scrollToTop();
+        });
+    }
+
+    // Scroll to top function (defined outside event handler)
+    function scrollToTop() {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
-    });
+    }
+
+    // Using capturing phase for keyboard events (true as third parameter)
+    window.addEventListener('keydown', function(e) {
+        if (e.altKey && (e.key.toLowerCase() === 't' || e.keyCode === 84)) {
+            e.preventDefault();
+            e.stopPropagation();
+            scrollToTop();
+        }
+    }, true);
 });
+
+// Additional global keyboard listener as a fallback
+window.onkeydown = function(e) {
+    if (e.altKey && (e.key.toLowerCase() === 't' || e.keyCode === 84)) {
+        e.preventDefault();
+        scrollTo({top: 0, behavior: 'smooth'});
+        return false;
+    }
+};
