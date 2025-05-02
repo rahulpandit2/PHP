@@ -26,7 +26,7 @@ include_once __DIR__ . '/../partials/head.php';
             <li><code>null</code> (no value)</li>
         </ul>
 
-        <p class="note"><strong>Important:</strong> The string <code>'false'</code> is <em>not</em> false. It is
+        <p class="note">Important: The string <span class="inline">'false'</span> is <em>not</em> false. It is
             actually considered <strong>true</strong> because it is a non-empty string.</p>
 
         <h2>Examples</h2>
@@ -52,7 +52,43 @@ include_once __DIR__ . '/../partials/head.php';
     ?&gt;
 </code>
 
-        <p>Alternatively, <code>var_dump()</code> alone will also show the data type and its value directly.</p>
+        <p>Alternatively, <span class="inline">var_dump()</span> alone will also show the data type and its value directly.</p>
+    </div>
+    <div class="card">
+        <h2>Type casting booleans.</h2>
+        <p>When booleans are type casted into strings the true and false value becomes "1" and "" i.e. empty string</p>
+        <code>
+    &lt;?php <br>
+    $isProductInStock = true; <br>
+    $isProductInStock = (string) $isProductInStock; <br>
+    var_dump($isProductInStock); // Outputs: string(1) "1" <br><br>
+    $isProductInStock = false; <br>
+    $isProductInStock = (string) $isProductInStock; <br>
+    var_dump($isProductInStock); // Outputs: string(0) "" <br>
+    ?&gt;
+        </code>
+        <p>When booleans are type casted into int the true and false value becomes 1 and 0</p>
+        <code>
+    &lt;?php <br>
+    $isProductInStock = true; <br>
+    $isProductInStock = (int) $isProductInStock; <br>
+    var_dump($isProductInStock); // Outputs: integer(1) <br><br>
+    $isProductInStock = false; <br>
+    $isProductInStock = (int) $isProductInStock; <br>
+    var_dump($isProductInStock); // Outputs: integer(0) <br>
+    ?&gt;
+        </code>
+        <p>When booleans are type casted into float the true and false value becomes 1 and 0</p>
+        <code>
+    &lt;?php <br>
+    $isProductInStock = true; <br>
+    $isProductInStock = (float) $isProductInStock; <br>
+    var_dump($isProductInStock); // Outputs: float(1) <br><br>
+    $isProductInStock = false; <br>
+    $isProductInStock = (float) $isProductInStock; <br>
+    var_dump($isProductInStock); // Outputs: float(0) <br>
+    ?&gt;
+        </code>
     </div>
 </div>
 
