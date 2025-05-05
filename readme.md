@@ -14,7 +14,7 @@
 ```html
 <?php
 // Set the page title here
-$page_title = "PHP Lessons | Chapter 01";
+$page_title = "PHP Lessons | Chapter ";
 // Set the root asset path
 $root_asset_path = '../assets';
 // Include header of this page
